@@ -10,3 +10,6 @@ export function getFaunaClient(): faunadb.Client {
     ...(useFaunaDocker ? { port: 8443 } : {}),
   })
 }
+
+
+export const getToday = (): string => new Date().toISOString().split('T')[0].split('-').reverse().join('-')
