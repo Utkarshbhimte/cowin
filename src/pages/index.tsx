@@ -1,6 +1,7 @@
 import { DistrictOptions } from "@/components/DistrictOptions";
 import SessionGrid from "@/components/SessionGrid";
 import { StateOptions } from "@/components/StateOptions";
+import Footer from "@/components/Footer";
 import { useLocalStorage } from "@/utils/useLocalStorage";
 import { NextSeo } from "next-seo";
 
@@ -24,7 +25,7 @@ export default function Home(): JSX.Element {
       <NextSeo title="Home" />
       <div className="h-screen">
         <div className="container mx-auto px-2 lg:px-0 py-12">
-          <div className="w-full max-w-4xl px-3 mb-6 md:mb-0">
+          <div className="w-full max-w-4xl px-3 mb-6 md:mb-0 mx-auto">
             <div className="flex justify-between items-center mb-8">
               <h1 className="font-bold text-6xl">Cowin</h1>
               <a
@@ -65,11 +66,12 @@ export default function Home(): JSX.Element {
             </div>
           </div>
         </div>
+        <Footer />
       </div>
     </>
   );
 }
 
 Home.layoutProps = {
-  Layout: (props: unknown) => <div className="" {...props} />,
+  Layout: (props: any) => <div {...props} />,
 };
