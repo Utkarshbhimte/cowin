@@ -38,12 +38,23 @@ const SessionGrid: React.FC<SessionGridProps> = ({ selectedDistrictId }) => {
   const centers = data?.centers
     ?.filter((c) => c.sessions?.find((s) => s.min_age_limit == 18))
     .sort(centerCompare);
-  // .sort(centerCompareFuntion);
+
+  const availCenters = centers?.filter((c) =>
+    c.sessions.find((s) => s.available_capacity)
+  );
   return (
-    <div className="grid md:grid-cols-3 gap-4">
-      {centers?.map((c) => (
-        <CenterCard key={c.center_id} center={c} />
-      ))}
+    <div>
+      {!availCenters?.length && (
+        <h3 className="text-center font-bold text-3xl my-12">
+          There are no available slots in 18+ vaccination centers in this
+          district
+        </h3>
+      )}
+      <div className="grid md:grid-cols-3 gap-4">
+        {centers?.map((c) => (
+          <CenterCard key={c.center_id} center={c} />
+        ))}
+      </div>
     </div>
   );
 };
