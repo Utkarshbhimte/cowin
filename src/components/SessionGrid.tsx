@@ -11,11 +11,11 @@ const getAllAvailSessionCount = (center: Center) => {
 };
 const centerCompare = (firstEl: Center, secondEl: Center): 1 | -1 | 0 => {
   if (getAllAvailSessionCount(firstEl) > getAllAvailSessionCount(secondEl)) {
-    return 1;
+    return -1;
   }
 
   if (getAllAvailSessionCount(firstEl) < getAllAvailSessionCount(secondEl)) {
-    return -1;
+    return 1;
   }
 
   return 0;
