@@ -27,7 +27,7 @@ const CenterCard: React.FC<{ center: Center }> = ({ center }) => {
         <h2 className="text-lg font-semibold">{center.name}</h2>
         <button
           onClick={handleCopyButtonClick}
-          className="p-4 rounded-md hover:bg-gray-200"
+          className="p-2 rounded-md hover:bg-gray-200"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -49,21 +49,27 @@ const CenterCard: React.FC<{ center: Center }> = ({ center }) => {
         <h4 className="font-medium mb-2 uppercase text-gray-500 tracking-wide">
           Sessions
         </h4>
-        <div>
+        <div className="grid gap-3">
           {center.sessions.map((s) => (
-            <span
+            <div
               className={cx(
-                "mr-2 mb-2 inline-block py-1 px-2 rounded-md",
+                "py-1 px-2 rounded-md mr-2 flex justify-between items-center",
                 !s.available_capacity && "border border-gray-300",
-                s.available_capacity > 10 && "text-white bg-indigo-700",
+                s.available_capacity > 10 &&
+                  "text-indigo-700 border border-indigo-700",
                 !!s.available_capacity &&
                   s.available_capacity <= 10 &&
-                  "bg-red-400 text-white"
+                  "text-red-400 border border-red-400"
               )}
               key={s.session_id}
             >
-              {dateFormat(s.date)}
-            </span>
+              <span>{dateFormat(s.date)} </span>
+              {!!s.available_capacity && (
+                <span>
+                  <strong>Available:</strong> {s.available_capacity}
+                </span>
+              )}
+            </div>
           ))}
         </div>
       </div>
