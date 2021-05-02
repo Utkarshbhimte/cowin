@@ -13,7 +13,12 @@ const dateFormat = (date: string) => {
 const CenterCard: React.FC<{ center: Center }> = ({ center }) => {
   const handleCopyButtonClick = () => {
     copyTextToClipboard(center.name);
-    window.open("https://selfregistration.cowin.gov.in/appointment", "_blank");
+    setTimeout(() => {
+      window.open(
+        "https://selfregistration.cowin.gov.in/appointment",
+        "_blank"
+      );
+    }, 0);
   };
   return (
     <div className="p-4 rounded-md  broder border border-gray-300 flex flex-col justify-between">
