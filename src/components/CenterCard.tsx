@@ -22,8 +22,8 @@ const CenterCard: React.FC<{ center: Center }> = ({ center }) => {
   };
   return (
     <div className="p-4 rounded-md  broder border border-gray-300 flex flex-col justify-between">
-      <div className="flex justify-between">
-        <h2 className="text-lg font-semibold mb-4">{center.name}</h2>
+      <div className="flex justify-between mb-4">
+        <h2 className="text-lg font-semibold">{center.name}</h2>
         <button
           onClick={handleCopyButtonClick}
           className="p-4 rounded-md hover:bg-gray-200"
