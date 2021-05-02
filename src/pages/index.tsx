@@ -3,7 +3,6 @@ import SessionGrid from "@/components/SessionGrid";
 import { StateOptions } from "@/components/StateOptions";
 import { useLocalStorage } from "@/utils/useLocalStorage";
 import { NextSeo } from "next-seo";
-import { useEffect } from "react";
 
 export default function Home(): JSX.Element {
   const [selectedState, setSelectedState] = useLocalStorage<string | null>(

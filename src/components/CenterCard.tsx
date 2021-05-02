@@ -1,7 +1,8 @@
-import { copyTextToClipboard } from "@/utils/copyToClipboard";
-import cx from "classNames";
 import React from "react";
+import { copyTextToClipboard } from "@/utils/copyToClipboard";
 import { Center } from "src/services/getSessions";
+// @ts-ignore
+import cx from "classNames";
 
 const dateFormat = (date: string) => {
   return new Intl.DateTimeFormat("en-US", {
