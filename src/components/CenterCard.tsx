@@ -21,8 +21,14 @@ const CenterCard: React.FC<{ center: Center }> = ({ center }) => {
       );
     }, 0);
   };
+
+  const validSessions = center.sessions.filter((s) => s.available_capacity);
   return (
-    <div className="p-4 rounded-md  broder border border-gray-300 flex flex-col justify-between">
+    <div
+      className={`p-4 rounded-md  broder border border-gray-300 flex flex-col justify-between ${
+        !validSessions.length ? "opacity-50" : "border-indigo-700"
+      }`}
+    >
       <div className="flex justify-between mb-4">
         <h2 className="text-lg font-semibold">{center.name}</h2>
         <button
@@ -50,7 +56,7 @@ const CenterCard: React.FC<{ center: Center }> = ({ center }) => {
           Sessions
         </h4>
         <div className="grid gap-3">
-          {center.sessions.map((s) => (
+          {validSessions.map((s) => (
             <div
               className={
                 `py-1 px-2 rounded-md mr-2 flex justify-between items-center` +
@@ -72,6 +78,10 @@ const CenterCard: React.FC<{ center: Center }> = ({ center }) => {
               )}
             </div>
           ))}
+
+          {!validSessions.length && (
+            <span>There are available session here</span>
+          )}
         </div>
       </div>
     </div>
