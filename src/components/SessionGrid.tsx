@@ -1,6 +1,7 @@
 import React from "react";
 import { useQuery } from "react-query";
 import { getSessions, SessionResponse } from "src/services/getSessions";
+import CenterCard from "./CenterCard";
 
 interface SessionGridProps {
   selectedDistrictId: string;
@@ -10,14 +11,16 @@ const SessionGrid: React.FC<SessionGridProps> = ({ selectedDistrictId }) => {
     ["sessions", selectedDistrictId],
     () => getSessions(selectedDistrictId)
   );
+
+  if (isLoading) {
+    return <div className="text-center">Loading</div>;
+  }
   return (
-    <div className="grid grid-cols-3 gap-4">
-      {data?.sessions
-        // ?.filter((a) => a.min_age_limit == 18)
-        .map((s) => (
-          <div className="p-4 rounded-lg">
-            <h4 className="font-3xl">{s.name}</h4>
-          </div>
+    <div className="grid md:grid-cols-3 gap-4">
+      {data?.centers
+        ?.filter((c) => c.sessions?.find((s) => s.min_age_limit == 18))
+        .map((c) => (
+          <CenterCard key={c.center_id} center={c} />
         ))}
     </div>
   );

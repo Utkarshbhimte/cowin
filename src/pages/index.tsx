@@ -1,37 +1,40 @@
 import { DistrictOptions } from "@/components/DistrictOptions";
 import SessionGrid from "@/components/SessionGrid";
 import { StateOptions } from "@/components/StateOptions";
+import { useLocalStorage } from "@/utils/useLocalStorage";
 import { NextSeo } from "next-seo";
-import { useEffect, useState } from "react";
-import { useQuery } from "react-query";
-import { getStates, StateResponse } from "src/services/getStates";
+import { useEffect } from "react";
 
 export default function Home(): JSX.Element {
-  const [selectedState, setSelectedState] = useState<string | null>(null);
-  const [selectedDistrict, setSelectedDistrict] = useState<string | null>(null);
-
-  const { isLoading, error, data: stateOptions } = useQuery<StateResponse>(
-    ["cityOptions", selectedState],
-    getStates
+  const [selectedState, setSelectedState] = useLocalStorage<string | null>(
+    "selectedState",
+    null
   );
+  const [selectedDistrict, setSelectedDistrict] = useLocalStorage<
+    string | null
+  >("selectedDistrict", null);
 
-  useEffect(() => {
-    if (selectedDistrict) {
+  const handleStateChange = (newState: string) => {
+    if (newState !== selectedState) {
       setSelectedDistrict(null);
     }
-  }, [selectedState]);
-
+    setSelectedState(newState);
+  };
   return (
     <>
       <NextSeo title="Home" />
       <div className="h-screen">
-        <div className="container mx-auto px-8 lg:px-0 py-12">
+        <div className="container mx-auto px-2 lg:px-0 py-12">
           <h1 className="font-bold text-2xl mb-8">Enter your preferences</h1>
           <div className="w-full max-w-4xl px-3 mb-6 md:mb-0">
             <div className="grid gap-8">
-              <StateOptions onChange={setSelectedState} />
+              <StateOptions
+                value={selectedState}
+                onChange={handleStateChange}
+              />
               {selectedState && (
                 <DistrictOptions
+                  value={selectedDistrict}
                   onChange={setSelectedDistrict}
                   selectedState={selectedState}
                 />
@@ -49,7 +52,5 @@ export default function Home(): JSX.Element {
 }
 
 Home.layoutProps = {
-  Layout: (props: unknown) => (
-    <div className="border-l-8 border-blue-700" {...props} />
-  ),
+  Layout: (props: unknown) => <div className="" {...props} />,
 };

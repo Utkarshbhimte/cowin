@@ -4,8 +4,12 @@ import { StateResponse, getStates } from "src/services/getStates";
 
 interface StateOptionsProps {
   onChange: (state: string) => void;
+  value: string | null;
 }
-export const StateOptions: React.FC<StateOptionsProps> = ({ onChange }) => {
+export const StateOptions: React.FC<StateOptionsProps> = ({
+  onChange,
+  value,
+}) => {
   const { isLoading, error, data: stateOptions } = useQuery<StateResponse>(
     ["stateOptions"],
     getStates
@@ -25,10 +29,13 @@ export const StateOptions: React.FC<StateOptionsProps> = ({ onChange }) => {
       <div className="flex">
         <select
           onChange={handleChange}
+          value={value || undefined}
           className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
         >
           {stateOptions?.states.map((state) => (
-            <option value={state.state_id}>{state.state_name}</option>
+            <option key={state.state_id} value={state.state_id}>
+              {state.state_name}
+            </option>
           ))}
         </select>
       </div>
