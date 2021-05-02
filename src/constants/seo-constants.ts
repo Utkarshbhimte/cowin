@@ -10,11 +10,11 @@ export const getURL = (): string => {
 
 const DEFAULT_TITLE = ''
 const DEFAULT_TITLE_TEMPLATE = 'Cowin | %s'
-const DEFAULT_DESCRIPTION = 'Easily check 18+ cowin centers near you with available slots'
+const DEFAULT_DESCRIPTION = 'Easily check available slots for 18+ in nearby vaccination centers'
 const DEFAULT_CANONICAL = getURL()
 const SITE_NAME = 'Cowin'
 // const DEFAULT_OG_IMAGE = `${DEFAULT_CANONICAL}/preview.png`
-const DEFAULT_OG_IMAGE = "https://og-image.vercel.app/Easily%20check%2018%2B%20cowin%20centers%20near%20you%20with%20available%20slots.png?theme=dark&md=1&fontSize=100px&images=https%3A%2F%2Fassets.vercel.com%2Fimage%2Fupload%2Ffront%2Fassets%2Fdesign%2Fvercel-triangle-white.svg"
+const DEFAULT_OG_IMAGE = "https://og-image.vercel.app/Easily%20check%20available%20slots%20for%2018%2B%20in%20nearby%20vaccination%20centers.png?theme=dark&md=1&fontSize=100px&images=https%3A%2F%2Fassets.vercel.com%2Fimage%2Fupload%2Ffront%2Fassets%2Fdesign%2Fvercel-triangle-white.svg"
 const TWITTER_HANDLE = '@bhimtebhaisaab'
 const TWITTER_CARD_TYPE = 'summary_large_image'
 const FAVICON_LINK = '/favicon.ico'
