@@ -23,8 +23,8 @@ export default function Home(): JSX.Element {
   return (
     <>
       <NextSeo title="Home" />
-      <div className="h-screen">
-        <div className="container mx-auto px-2 lg:px-0 py-12">
+      <div className="min-h-screen">
+        <div className="container mx-auto px-2 lg:px-0 py-12 min-h-screen">
           <div className="w-full max-w-4xl px-3 mb-6 md:mb-0 mx-auto">
             <div className="flex justify-between items-center mb-8">
               <h1 className="font-bold text-6xl">Cowin</h1>
