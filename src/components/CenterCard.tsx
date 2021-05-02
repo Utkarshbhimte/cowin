@@ -1,6 +1,8 @@
 import React from "react";
 import { copyTextToClipboard } from "@/utils/copyToClipboard";
 import { Center } from "src/services/getSessions";
+import { getWindow } from "src/utils/getWindow";
+
 // @ts-ignore
 const dateFormat = (date: string) => {
   return new Intl.DateTimeFormat("en-US", {
@@ -13,7 +15,7 @@ const CenterCard: React.FC<{ center: Center }> = ({ center }) => {
   const handleCopyButtonClick = () => {
     copyTextToClipboard(center.name);
     setTimeout(() => {
-      window.open(
+      getWindow()?.open(
         "https://selfregistration.cowin.gov.in/appointment",
         "_blank"
       );
