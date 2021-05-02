@@ -2,8 +2,6 @@ import React from "react";
 import { copyTextToClipboard } from "@/utils/copyToClipboard";
 import { Center } from "src/services/getSessions";
 // @ts-ignore
-import cx from "classNames";
-
 const dateFormat = (date: string) => {
   return new Intl.DateTimeFormat("en-US", {
     month: "short",
@@ -52,15 +50,16 @@ const CenterCard: React.FC<{ center: Center }> = ({ center }) => {
         <div className="grid gap-3">
           {center.sessions.map((s) => (
             <div
-              className={cx(
-                "py-1 px-2 rounded-md mr-2 flex justify-between items-center",
-                !s.available_capacity && "border border-gray-300",
-                s.available_capacity > 10 &&
-                  "text-indigo-700 border border-indigo-700",
-                !!s.available_capacity &&
+              className={
+                `py-1 px-2 rounded-md mr-2 flex justify-between items-center` +
+                (!s.available_capacity ? `border border-gray-300` : "") +
+                (s.available_capacity > 10
+                  ? "text-indigo-700 border border-indigo-700"
+                  : "") +
+                (!!s.available_capacity &&
                   s.available_capacity <= 10 &&
-                  "text-red-400 border border-red-400"
-              )}
+                  "text-red-400 border border-red-400")
+              }
               key={s.session_id}
             >
               <span>{dateFormat(s.date)} </span>
