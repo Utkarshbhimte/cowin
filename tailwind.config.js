@@ -6,7 +6,7 @@ module.exports = {
   darkMode: false, // or 'media' or 'class'
   theme: {
     fontFamily: {
-      sans: ['Inter', ...fontFamily.sans],
+      sans: ['DM Sans', ...fontFamily.sans],
     },
     extend: {},
   },

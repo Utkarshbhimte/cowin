@@ -25,8 +25,8 @@ export default function Home(): JSX.Element {
       <NextSeo title="Home" />
       <div className="h-screen">
         <div className="container mx-auto px-2 lg:px-0 py-12">
-          <h1 className="font-bold text-2xl mb-8">Enter your preferences</h1>
           <div className="w-full max-w-4xl px-3 mb-6 md:mb-0">
+            <h1 className="font-bold text-6xl mb-8">Cowin</h1>
             <div className="grid gap-8">
               <StateOptions
                 value={selectedState}
