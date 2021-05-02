@@ -67,6 +67,7 @@ const CenterCard: React.FC<{ center: Center }> = ({ center }) => {
           <div className="flex">
             <a
               target="_blank"
+              rel="no referrer no opener"
               href={`https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(
                 [
                   center.name,

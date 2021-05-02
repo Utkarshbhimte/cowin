@@ -25,7 +25,7 @@ interface SessionGridProps {
   selectedDistrictId: string;
 }
 const SessionGrid: React.FC<SessionGridProps> = ({ selectedDistrictId }) => {
-  const { isLoading, error, data } = useQuery<SessionResponse>(
+  const { isLoading, data } = useQuery<SessionResponse>(
     ["sessions", selectedDistrictId],
     () => getSessions(selectedDistrictId),
     { refetchInterval: 10000 }
