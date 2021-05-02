@@ -47,6 +47,20 @@ export default function Home(): JSX.Element {
                 </button>
               </a>
             </div>
+            <p
+              style={{ borderLeft: "4px solid rgba(67, 56, 202)" }}
+              className="border-indigo-500 px-4 border-t-2 py-2 my-8"
+            >
+              <strong>Disclaimer:</strong> There is a delay in the data shown
+              here. <br />
+              If you want the vaccine urgently, I suggest you to check out{" "}
+              <a
+                className="text-indigo-700"
+                href="https://selfregistration.cowin.gov.in/appointment"
+              >
+                the official website
+              </a>
+            </p>
             <div className="grid gap-8">
               <StateOptions
                 value={selectedState}
